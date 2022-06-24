@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>create user</h1>
+    <form action="" id="form">
+        <input type="text" name="email" placeholder="email">
+        <input type="text" name="first_name" placeholder="firstName">
+        <input type="text" name="last_name" placeholder="lastName">
+        <input type="text" name="gender" placeholder="gender">
+        <input type="text" name="date_of_birth" placeholder="birthday">
+        <input type="text" name="country_of_birth" placeholder="country">
+
+        <button type="submit">submit</button>
+    </form>
+
+
+
+     <h2>Get all</h2>
+        <button type="submit" id="showAllButton" onclick="showAll()">Get All</button>
+
+        <div id="showAll"></div>
+
+
+
+    <h1>Get One</h1>
+    <input type="text" id="idGetOne">
+    <button type="submit"onclick="showOne()">Get One</button>
+
+    <div id="showOne"> </div>
+
+
+    <h1>Delete One</h1>
+    <input type="text" id="forDelete">
+    <button type="submit"onclick="deleteOne()">Delete</button>
+
+
+
+
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
