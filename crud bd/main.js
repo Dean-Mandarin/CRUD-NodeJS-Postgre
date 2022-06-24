@@ -1,4 +1,4 @@
-const allUsersSection = document.querySelector('.allUsers');
+
 const fetchAddUserAction = async (data) => {
     const url = 'http://localhost:8008/api/user';
     try {
@@ -103,3 +103,55 @@ function deleteOne(){
     fetchDeleteAction(idDel);
 }
 
+
+//---------------------------------UPDATE--------------------------------------------------------------------------------
+const oldData = async (id) => {
+    const url = `http://localhost:8008/api/user/${id}`;
+
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+        }).then((res) => res.json());
+
+        console.log(response);
+
+        for (let key in response) {
+            document.getElementById("showOld").innerHTML += '<div>' + JSON.stringify(key) + ": " + JSON.stringify(response[key]) + ", " + '</div>';
+        }
+
+
+        // console.log(response);
+    } catch (error) {
+        console.error('Ошибка:', error);
+    }
+}
+
+function ShowOldData(){
+    const id = document.getElementById("forUpdate").value;
+    oldData(id);
+}
+
+const fetchUpdateUserAction = async (data, id) => {
+    const url = `http://localhost:8008/api/user/${id}`;
+    try {
+        const response = await fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify(data), // данные могут быть 'строкой' или {объектом}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((res) => res.json());
+        console.log('Успех:', response);
+    } catch (error) {
+        console.error('Ошибка:', error);
+    }
+}
+
+document.querySelector("#formFresh").addEventListener("submit", (event) => {
+    const id = document.getElementById("forUpdate").value;
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+    console.log(event);
+    fetchUpdateUserAction(data, id);
+});
